@@ -1,0 +1,8 @@
+chainlit
+langchain
+langchain_community
+PyPDF2
+chromadb
+groq
+langchain-groq
+ollama
