@@ -13,7 +13,7 @@ import chainlit as cl
 #load_dotenv()  #
 #groq_api_key = os.environ['GROQ_API_KEY']
 
-llm_local = ChatOllama(model="mistral-instruct")
+llm_local = ChatOllama(model="mistral:instruct")
 llm_groq = ChatGroq(
             #groq_api_key=groq_api_key,
             #model_name='llama2-70b-4096' 
