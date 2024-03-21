@@ -1,5 +1,9 @@
 .venv/
+venv
 .env
 chainlit.md
 .chainlit/
 __pycache__
+.files
+.pdf
+.Identifier
