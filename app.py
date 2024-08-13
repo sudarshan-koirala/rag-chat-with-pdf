@@ -1,4 +1,4 @@
-import PyPDF2
+import pdfplumber
 from langchain_community.embeddings import OllamaEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import Chroma
@@ -39,13 +39,13 @@ async def on_chat_start():
     # Inform the user that processing has started
     msg = cl.Message(content=f"Processing `{file.name}`...")
     await msg.send()
-
-    # Read the PDF file
-    pdf = PyPDF2.PdfReader(file.path)
-    pdf_text = ""
-    for page in pdf.pages:
-        pdf_text += page.extract_text()
-        
+    
+    pdf_text=""
+    
+    with pdfplumber.open(file.path) as pdf: # Will handle more complex text
+        for page in pdf.pages:
+            pdf_text+=page.extract_text()
+    
 
     # Split the text into chunks
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
